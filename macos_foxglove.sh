@@ -1,0 +1,1 @@
+docker run -it --rm -p 8766:8766 lalayants/path ros2 launch foxglove_bridge foxglove_bridge_launch.xml port:=8766

@@ -1,0 +1,46 @@
+version: '3.9'
+name: 'path_planning'
+
+services:
+  planner:
+    build:
+      context: .
+      args:
+        ROS_DISTRO: humble
+    image: lalayants/path
+    container_name: 3d_navigation
+    command: ["/bin/bash", "-ci", "bash"]
+    environment:
+      - DISPLAY
+      - XAUTORITY
+      - QT_X11_NO_MITSHM=1
+      - LIBGL_ALWAYS_INDIRECT=1
+    ipc: host
+    stdin_open: true
+    tty: true
+    network_mode: host
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /etc/localtime:/etc/localtime:ro
+      - /dev:/dev
+      - ./:/workspace
+    # depends_on:
+    #   - fox-glove
+
+  # fox-glove:
+  #   build:
+  #     context: .
+  #     args:
+  #       ROS_DISTRO: humble
+  #   image: lalayants/path
+  #   container_name: fox-glove
+  #   ipc: host
+  #   stdin_open: true
+  #   tty: true
+  #   network_mode: host
+  #   volumes:
+  #     - ./:/workspace
+  #   ports: ['8766:8766']
+  #   working_dir: /workspace
+  #   command: ["/bin/bash", "-ci", "ros2 launch foxglove_bridge foxglove_bridge_launch.xml port:=8766"]
+
