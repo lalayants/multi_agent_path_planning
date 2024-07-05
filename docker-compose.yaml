@@ -23,7 +23,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /etc/localtime:/etc/localtime:ro
       - /dev:/dev
-      - ./:/workspace
+      - ./ros_ws/:/workspace
     # depends_on:
     #   - fox-glove
 

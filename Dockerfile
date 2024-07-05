@@ -13,5 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libwebsocketpp-dev \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt update && apt install python3 python3-dev python3-pip -y
+RUN pip install rclpy
 
 # ARG some_variable_name=some_default_value
